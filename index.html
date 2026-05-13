@@ -124,6 +124,7 @@
     .otro-rest { display: none; }
     .otro-rest.show { display: block; }
     .hint { font-size: 12px; color: rgba(240,235,227,0.25); margin-top: 10px; }
+    .rest-persona-label { font-size: 12px; color: rgba(240,235,227,0.35); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem; }
 
     /* Slide animation */
     .slide-down { overflow: hidden; max-height: 0; transition: max-height 0.35s ease, opacity 0.3s ease; opacity: 0; }
@@ -164,7 +165,7 @@
       <div class="date-info">
         <div class="date-chip"><i class="ti ti-calendar-event"></i> Sábado 30 de mayo</div>
         <div class="date-chip"><i class="ti ti-clock"></i> 21:00 hs</div>
-        <a class="date-chip" href="https://www.google.com.ar/maps/place/SANTOS+BAR/@-34.5677265,-58.4515826,15z/data=!4m6!3m5!1s0x95bcb5ed75ee6c6f:0x9ccef423760540b1!8m2!3d-34.5843811!4d-58.4429016!16s%2Fg%2F11f1w9rn2n?entry=ttu&g_ep=EgoyMDI2MDUwMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color:inherit;text-decoration:none;"><i class="ti ti-map-pin"></i> Santos Bar ↗</a>
+        <a class="date-chip" href="https://maps.app.goo.gl/uQPdJv2Zn12pNaDs7" target="_blank" style="color:inherit;text-decoration:none;"><i class="ti ti-map-pin"></i> Puerta Uno ↗</a>
       </div>
     </div>
 
@@ -182,7 +183,7 @@
         <div class="card-title">¿Venís?</div>
         <div class="toggle-group">
           <button class="toggle-btn" id="btn-si" onclick="selectAsiste('si')">
-            <i class="ti ti-circle-check"></i> Sí, ahí voy
+            <i class="ti ti-circle-check"></i> Sí, voy
           </button>
           <button class="toggle-btn" id="btn-no" onclick="selectAsiste('no')">
             <i class="ti ti-circle-x"></i> No puedo 😢
@@ -205,27 +206,34 @@
       <div class="slide-down" id="section-rest">
         <div class="card" style="margin-bottom:1.25rem;">
           <div class="card-title">Restricciones alimentarias</div>
+
+          <div class="rest-persona-label" id="rest-label-p1">Tus restricciones</div>
           <div class="rest-grid">
-            <button class="rest-chip" id="r-vegetariano" onclick="toggleRest('vegetariano')">
-              <i class="ti ti-leaf"></i> Vegetariano
-            </button>
-            <button class="rest-chip" id="r-vegano" onclick="toggleRest('vegano')">
-              <i class="ti ti-plant-2"></i> Vegano
-            </button>
-            <button class="rest-chip" id="r-celiaco" onclick="toggleRest('celiaco')">
-              <i class="ti ti-bread-off"></i> Sin gluten
-            </button>
-            <button class="rest-chip" id="r-lactosa" onclick="toggleRest('lactosa')">
-              <i class="ti ti-droplet-off"></i> Sin lactosa
-            </button>
-            <button class="rest-chip" id="r-otro" onclick="toggleRest('otro')" style="grid-column: 1 / -1;">
-              <i class="ti ti-pencil"></i> Otra restricción
-            </button>
+            <button class="rest-chip" id="p1-vegetariano" onclick="toggleRest(1,'vegetariano')"><i class="ti ti-leaf"></i> Vegetariano</button>
+            <button class="rest-chip" id="p1-vegano" onclick="toggleRest(1,'vegano')"><i class="ti ti-plant-2"></i> Vegano</button>
+            <button class="rest-chip" id="p1-celiaco" onclick="toggleRest(1,'celiaco')"><i class="ti ti-bread-off"></i> Sin gluten</button>
+            <button class="rest-chip" id="p1-lactosa" onclick="toggleRest(1,'lactosa')"><i class="ti ti-droplet-off"></i> Sin lactosa</button>
+            <button class="rest-chip" id="p1-otro" onclick="toggleRest(1,'otro')" style="grid-column:1/-1;"><i class="ti ti-pencil"></i> Otra restricción</button>
           </div>
-          <div class="otro-rest" id="otro-input">
-            <textarea id="otra-text" placeholder="Contanos cuál es tu restricción..."></textarea>
+          <div class="otro-rest" id="otro-input-1">
+            <textarea id="otra-text-1" placeholder="Contanos cuál es tu restricción..."></textarea>
           </div>
-          <div class="hint">Podés marcar más de una · Dejá en blanco si no tenés ninguna</div>
+
+          <div class="slide-down" id="rest-p2-section">
+            <div class="rest-persona-label" style="margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid rgba(255,255,255,0.07);">Restricciones de tu acompañante</div>
+            <div class="rest-grid">
+              <button class="rest-chip" id="p2-vegetariano" onclick="toggleRest(2,'vegetariano')"><i class="ti ti-leaf"></i> Vegetariano</button>
+              <button class="rest-chip" id="p2-vegano" onclick="toggleRest(2,'vegano')"><i class="ti ti-plant-2"></i> Vegano</button>
+              <button class="rest-chip" id="p2-celiaco" onclick="toggleRest(2,'celiaco')"><i class="ti ti-bread-off"></i> Sin gluten</button>
+              <button class="rest-chip" id="p2-lactosa" onclick="toggleRest(2,'lactosa')"><i class="ti ti-droplet-off"></i> Sin lactosa</button>
+              <button class="rest-chip" id="p2-otro" onclick="toggleRest(2,'otro')" style="grid-column:1/-1;"><i class="ti ti-pencil"></i> Otra restricción</button>
+            </div>
+            <div class="otro-rest" id="otro-input-2">
+              <textarea id="otra-text-2" placeholder="Restricción del acompañante..."></textarea>
+            </div>
+          </div>
+
+          <div class="hint" style="margin-top:10px;">Podés marcar más de una · Dejá en blanco si no tenés ninguna</div>
         </div>
       </div>
 
@@ -246,11 +254,12 @@
 
   <script>
     // ⚡ REEMPLAZÁ esta URL con la de tu Apps Script deployment
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyxEQW76I6SAQh5aTfvwgAeZCZYPM4ZE1PJRieIay0NmEu3vZPCMkjwJ5akqkDIVJu8hA/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbysRKhf-FKnUshCAqgNbjgQ8-H2QQoPuDXzlglobllyfrMTtDL_uZec7weF51FhUq_JCw/exec';
 
     let asistek = null;
     let personas = null;
-    let restricciones = new Set();
+    let rest1 = new Set();
+    let rest2 = new Set();
 
     function selectAsiste(val) {
       asistek = val;
@@ -262,9 +271,7 @@
         personas = null;
         document.getElementById('p1').className = 'persona-btn';
         document.getElementById('p2').className = 'persona-btn';
-        restricciones.clear();
-        ['vegetariano','vegano','celiaco','lactosa','otro'].forEach(k => document.getElementById('r-' + k).classList.remove('active'));
-        document.getElementById('otro-input').className = 'otro-rest';
+        resetRestricciones();
       }
       checkReady();
     }
@@ -273,19 +280,41 @@
       personas = n;
       document.getElementById('p1').className = 'persona-btn' + (n === 1 ? ' active' : '');
       document.getElementById('p2').className = 'persona-btn' + (n === 2 ? ' active' : '');
+      document.getElementById('rest-label-p1').textContent = n === 2 ? 'Tus restricciones' : 'Tus restricciones';
+      document.getElementById('rest-p2-section').className = 'slide-down' + (n === 2 ? ' open' : '');
+      if (n === 1) { rest2.clear(); resetChips(2); document.getElementById('otro-input-2').className = 'otro-rest'; }
       checkReady();
     }
 
-    function toggleRest(key) {
-      const el = document.getElementById('r-' + key);
-      if (restricciones.has(key)) {
-        restricciones.delete(key);
-        el.classList.remove('active');
-      } else {
-        restricciones.add(key);
-        el.classList.add('active');
+    function toggleRest(p, key) {
+      const set = p === 1 ? rest1 : rest2;
+      const el = document.getElementById('p' + p + '-' + key);
+      if (set.has(key)) { set.delete(key); el.classList.remove('active'); }
+      else { set.add(key); el.classList.add('active'); }
+      document.getElementById('otro-input-' + p).className = 'otro-rest' + (set.has('otro') ? ' show' : '');
+    }
+
+    function resetChips(p) {
+      ['vegetariano','vegano','celiaco','lactosa','otro'].forEach(k => {
+        document.getElementById('p' + p + '-' + k).classList.remove('active');
+      });
+    }
+
+    function resetRestricciones() {
+      rest1.clear(); rest2.clear();
+      resetChips(1); resetChips(2);
+      document.getElementById('otro-input-1').className = 'otro-rest';
+      document.getElementById('otro-input-2').className = 'otro-rest';
+      document.getElementById('rest-p2-section').className = 'slide-down';
+    }
+
+    function getRestString(set, textareaId) {
+      let list = [...set].filter(r => r !== 'otro');
+      if (set.has('otro')) {
+        const t = document.getElementById(textareaId).value.trim();
+        if (t) list.push(t);
       }
-      document.getElementById('otro-input').className = 'otro-rest' + (restricciones.has('otro') ? ' show' : '');
+      return list.length ? list.join(', ') : 'Ninguna';
     }
 
     function checkReady() {
@@ -302,17 +331,15 @@
       status.className = 'status-msg';
       status.textContent = '';
 
-      let restList = [...restricciones].filter(r => r !== 'otro');
-      if (restricciones.has('otro')) {
-        const t = document.getElementById('otra-text').value.trim();
-        if (t) restList.push(t);
-      }
+      const r1 = getRestString(rest1, 'otra-text-1');
+      const r2 = personas === 2 ? getRestString(rest2, 'otra-text-2') : null;
 
       const payload = {
         nombre: document.getElementById('nombre').value.trim(),
         asiste: asistek === 'si' ? 'Sí' : 'No',
         personas: asistek === 'si' ? personas : 0,
-        restricciones: restList.length ? restList.join(', ') : 'Ninguna',
+        restricciones: r1,
+        restricciones_acompanante: r2 || '—',
         timestamp: new Date().toLocaleString('es-AR')
       };
 
