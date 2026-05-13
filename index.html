@@ -175,8 +175,10 @@
 
       <div class="card">
         <div class="card-title">¿Quién sos?</div>
-        <label>Tu nombre</label>
-        <input type="text" id="nombre" placeholder="Nombre y apellido" oninput="checkReady()" />
+        <label>Nombre</label>
+        <input type="text" id="nombre" placeholder="Tu nombre" oninput="checkReady()" />
+        <label style="margin-top:0.85rem;">Apellido</label>
+        <input type="text" id="apellido" placeholder="Tu apellido" oninput="checkReady()" />
       </div>
 
       <div class="card">
@@ -359,6 +361,7 @@
 
     function checkReady() {
       const nombre = document.getElementById('nombre').value.trim();
+      const apellido = document.getElementById('apellido').value.trim();
       const persOk = asistek === 'no' || personas !== null;
       // rest1: debe haber respondido si/no; si dijo si, debe tener al menos un chip seleccionado
       const rest1Answered = restResp1 !== null;
@@ -368,7 +371,7 @@
       const rest2Answered = restResp2 !== null;
       const rest2ChipsOk = restResp2 !== 'si' || rest2.size > 0;
       const rest2Ok = personas !== 2 || (rest2Answered && rest2ChipsOk);
-      document.getElementById('submit-btn').disabled = !(nombre && asistek && persOk && rest1Ok && rest2Ok);
+      document.getElementById('submit-btn').disabled = !(nombre && apellido && asistek && persOk && rest1Ok && rest2Ok);
     }
 
     async function enviarRSVP() {
@@ -383,7 +386,7 @@
       const r2 = personas === 2 ? getRestString(restResp2, rest2, 'otra-text-2') : '—';
 
       const payload = {
-        nombre: document.getElementById('nombre').value.trim(),
+        nombre: document.getElementById('nombre').value.trim() + ' ' + document.getElementById('apellido').value.trim(),
         asiste: asistek === 'si' ? 'Sí' : 'No',
         personas: asistek === 'si' ? personas : 0,
         restricciones: r1,
