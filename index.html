@@ -328,6 +328,7 @@
       if (set.has(key)) { set.delete(key); el.classList.remove('active'); }
       else { set.add(key); el.classList.add('active'); }
       document.getElementById('otro-input-' + p).className = 'otro-rest' + (set.has('otro') ? ' show' : '');
+      checkReady();
     }
 
     function resetChips(p) {
@@ -359,8 +360,14 @@
     function checkReady() {
       const nombre = document.getElementById('nombre').value.trim();
       const persOk = asistek === 'no' || personas !== null;
-      const rest1Ok = asistek === 'no' || restResp1 !== null;
-      const rest2Ok = personas !== 2 || restResp2 !== null;
+      // rest1: debe haber respondido si/no; si dijo si, debe tener al menos un chip seleccionado
+      const rest1Answered = restResp1 !== null;
+      const rest1ChipsOk = restResp1 !== 'si' || rest1.size > 0;
+      const rest1Ok = asistek === 'no' || (rest1Answered && rest1ChipsOk);
+      // rest2: igual pero solo si son 2
+      const rest2Answered = restResp2 !== null;
+      const rest2ChipsOk = restResp2 !== 'si' || rest2.size > 0;
+      const rest2Ok = personas !== 2 || (rest2Answered && rest2ChipsOk);
       document.getElementById('submit-btn').disabled = !(nombre && asistek && persOk && rest1Ok && rest2Ok);
     }
 
