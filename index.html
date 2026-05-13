@@ -191,6 +191,7 @@
         </div>
 
         <div class="slide-down" id="section-si">
+          <!-- Acompañante -->
           <div class="personas-label">¿Cuántos van?</div>
           <div class="personas-group">
             <button class="persona-btn" id="p1" onclick="selectPersonas(1)">
@@ -203,37 +204,53 @@
         </div>
       </div>
 
+      <!-- Restricciones persona 1 -->
       <div class="slide-down" id="section-rest">
         <div class="card" style="margin-bottom:1.25rem;">
           <div class="card-title">Restricciones alimentarias</div>
 
-          <div class="rest-persona-label" id="rest-label-p1">Tus restricciones</div>
-          <div class="rest-grid">
-            <button class="rest-chip" id="p1-vegetariano" onclick="toggleRest(1,'vegetariano')"><i class="ti ti-leaf"></i> Vegetariano</button>
-            <button class="rest-chip" id="p1-vegano" onclick="toggleRest(1,'vegano')"><i class="ti ti-plant-2"></i> Vegano</button>
-            <button class="rest-chip" id="p1-celiaco" onclick="toggleRest(1,'celiaco')"><i class="ti ti-bread-off"></i> Sin gluten</button>
-            <button class="rest-chip" id="p1-lactosa" onclick="toggleRest(1,'lactosa')"><i class="ti ti-droplet-off"></i> Sin lactosa</button>
-            <button class="rest-chip" id="p1-otro" onclick="toggleRest(1,'otro')" style="grid-column:1/-1;"><i class="ti ti-pencil"></i> Otra restricción</button>
+          <!-- ¿Tenés restricciones? -->
+          <div class="rest-persona-label">¿Tenés alguna restricción?</div>
+          <div class="toggle-group" style="margin-bottom:0;">
+            <button class="toggle-btn" id="rest1-si" onclick="selectRest(1,'si')"><i class="ti ti-circle-check"></i> Sí</button>
+            <button class="toggle-btn" id="rest1-no" onclick="selectRest(1,'no')"><i class="ti ti-circle-x"></i> No</button>
           </div>
-          <div class="otro-rest" id="otro-input-1">
-            <textarea id="otra-text-1" placeholder="Contanos cuál es tu restricción..."></textarea>
+          <div class="slide-down" id="rest1-chips">
+            <div class="rest-grid" style="margin-top:0.85rem;">
+              <button class="rest-chip" id="p1-vegetariano" onclick="toggleRest(1,'vegetariano')"><i class="ti ti-leaf"></i> Vegetariano</button>
+              <button class="rest-chip" id="p1-vegano" onclick="toggleRest(1,'vegano')"><i class="ti ti-plant-2"></i> Vegano</button>
+              <button class="rest-chip" id="p1-celiaco" onclick="toggleRest(1,'celiaco')"><i class="ti ti-bread-off"></i> Sin gluten</button>
+              <button class="rest-chip" id="p1-lactosa" onclick="toggleRest(1,'lactosa')"><i class="ti ti-droplet-off"></i> Sin lactosa</button>
+              <button class="rest-chip" id="p1-otro" onclick="toggleRest(1,'otro')" style="grid-column:1/-1;"><i class="ti ti-pencil"></i> Otra restricción</button>
+            </div>
+            <div class="otro-rest" id="otro-input-1">
+              <textarea id="otra-text-1" placeholder="Contanos cuál es tu restricción..."></textarea>
+            </div>
           </div>
 
+          <!-- Restricciones acompañante — solo si son 2 -->
           <div class="slide-down" id="rest-p2-section">
-            <div class="rest-persona-label" style="margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid rgba(255,255,255,0.07);">Restricciones de tu acompañante</div>
-            <div class="rest-grid">
-              <button class="rest-chip" id="p2-vegetariano" onclick="toggleRest(2,'vegetariano')"><i class="ti ti-leaf"></i> Vegetariano</button>
-              <button class="rest-chip" id="p2-vegano" onclick="toggleRest(2,'vegano')"><i class="ti ti-plant-2"></i> Vegano</button>
-              <button class="rest-chip" id="p2-celiaco" onclick="toggleRest(2,'celiaco')"><i class="ti ti-bread-off"></i> Sin gluten</button>
-              <button class="rest-chip" id="p2-lactosa" onclick="toggleRest(2,'lactosa')"><i class="ti ti-droplet-off"></i> Sin lactosa</button>
-              <button class="rest-chip" id="p2-otro" onclick="toggleRest(2,'otro')" style="grid-column:1/-1;"><i class="ti ti-pencil"></i> Otra restricción</button>
-            </div>
-            <div class="otro-rest" id="otro-input-2">
-              <textarea id="otra-text-2" placeholder="Restricción del acompañante..."></textarea>
+            <div style="margin-top:1.25rem; padding-top:1.25rem; border-top:0.5px solid rgba(255,255,255,0.07);">
+              <div class="rest-persona-label">¿Tu acompañante tiene alguna restricción?</div>
+              <div class="toggle-group" style="margin-bottom:0;">
+                <button class="toggle-btn" id="rest2-si" onclick="selectRest(2,'si')"><i class="ti ti-circle-check"></i> Sí</button>
+                <button class="toggle-btn" id="rest2-no" onclick="selectRest(2,'no')"><i class="ti ti-circle-x"></i> No</button>
+              </div>
+              <div class="slide-down" id="rest2-chips">
+                <div class="rest-grid" style="margin-top:0.85rem;">
+                  <button class="rest-chip" id="p2-vegetariano" onclick="toggleRest(2,'vegetariano')"><i class="ti ti-leaf"></i> Vegetariano</button>
+                  <button class="rest-chip" id="p2-vegano" onclick="toggleRest(2,'vegano')"><i class="ti ti-plant-2"></i> Vegano</button>
+                  <button class="rest-chip" id="p2-celiaco" onclick="toggleRest(2,'celiaco')"><i class="ti ti-bread-off"></i> Sin gluten</button>
+                  <button class="rest-chip" id="p2-lactosa" onclick="toggleRest(2,'lactosa')"><i class="ti ti-droplet-off"></i> Sin lactosa</button>
+                  <button class="rest-chip" id="p2-otro" onclick="toggleRest(2,'otro')" style="grid-column:1/-1;"><i class="ti ti-pencil"></i> Otra restricción</button>
+                </div>
+                <div class="otro-rest" id="otro-input-2">
+                  <textarea id="otra-text-2" placeholder="Restricción del acompañante..."></textarea>
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="hint" style="margin-top:10px;">Podés marcar más de una · Dejá en blanco si no tenés ninguna</div>
         </div>
       </div>
 
@@ -258,6 +275,8 @@
 
     let asistek = null;
     let personas = null;
+    let restResp1 = null; // 'si' | 'no'
+    let restResp2 = null;
     let rest1 = new Set();
     let rest2 = new Set();
 
@@ -268,7 +287,7 @@
       document.getElementById('section-si').className = 'slide-down' + (val === 'si' ? ' open' : '');
       document.getElementById('section-rest').className = 'slide-down' + (val === 'si' ? ' open' : '');
       if (val === 'no') {
-        personas = null;
+        personas = null; restResp1 = null; restResp2 = null;
         document.getElementById('p1').className = 'persona-btn';
         document.getElementById('p2').className = 'persona-btn';
         resetRestricciones();
@@ -280,9 +299,26 @@
       personas = n;
       document.getElementById('p1').className = 'persona-btn' + (n === 1 ? ' active' : '');
       document.getElementById('p2').className = 'persona-btn' + (n === 2 ? ' active' : '');
-      document.getElementById('rest-label-p1').textContent = n === 2 ? 'Tus restricciones' : 'Tus restricciones';
       document.getElementById('rest-p2-section').className = 'slide-down' + (n === 2 ? ' open' : '');
-      if (n === 1) { rest2.clear(); resetChips(2); document.getElementById('otro-input-2').className = 'otro-rest'; }
+      if (n === 1) {
+        restResp2 = null; rest2.clear(); resetChips(2);
+        document.getElementById('rest2-si').className = 'toggle-btn';
+        document.getElementById('rest2-no').className = 'toggle-btn';
+        document.getElementById('rest2-chips').className = 'slide-down';
+        document.getElementById('otro-input-2').className = 'otro-rest';
+      }
+      checkReady();
+    }
+
+    function selectRest(p, val) {
+      if (p === 1) restResp1 = val; else restResp2 = val;
+      document.getElementById('rest' + p + '-si').className = 'toggle-btn' + (val === 'si' ? ' active-si' : '');
+      document.getElementById('rest' + p + '-no').className = 'toggle-btn' + (val === 'no' ? ' active-no' : '');
+      document.getElementById('rest' + p + '-chips').className = 'slide-down' + (val === 'si' ? ' open' : '');
+      if (val === 'no') {
+        if (p === 1) { rest1.clear(); resetChips(1); document.getElementById('otro-input-1').className = 'otro-rest'; }
+        else { rest2.clear(); resetChips(2); document.getElementById('otro-input-2').className = 'otro-rest'; }
+      }
       checkReady();
     }
 
@@ -303,12 +339,15 @@
     function resetRestricciones() {
       rest1.clear(); rest2.clear();
       resetChips(1); resetChips(2);
+      ['rest1-si','rest1-no','rest2-si','rest2-no'].forEach(id => { document.getElementById(id).className = 'toggle-btn'; });
+      ['rest1-chips','rest2-chips','rest-p2-section'].forEach(id => { document.getElementById(id).className = 'slide-down'; });
       document.getElementById('otro-input-1').className = 'otro-rest';
       document.getElementById('otro-input-2').className = 'otro-rest';
-      document.getElementById('rest-p2-section').className = 'slide-down';
     }
 
-    function getRestString(set, textareaId) {
+    function getRestString(restResp, set, textareaId) {
+      if (restResp === 'no') return 'Ninguna';
+      if (restResp === null) return '—';
       let list = [...set].filter(r => r !== 'otro');
       if (set.has('otro')) {
         const t = document.getElementById(textareaId).value.trim();
@@ -320,7 +359,9 @@
     function checkReady() {
       const nombre = document.getElementById('nombre').value.trim();
       const persOk = asistek === 'no' || personas !== null;
-      document.getElementById('submit-btn').disabled = !(nombre && asistek && persOk);
+      const rest1Ok = asistek === 'no' || restResp1 !== null;
+      const rest2Ok = personas !== 2 || restResp2 !== null;
+      document.getElementById('submit-btn').disabled = !(nombre && asistek && persOk && rest1Ok && rest2Ok);
     }
 
     async function enviarRSVP() {
@@ -331,15 +372,15 @@
       status.className = 'status-msg';
       status.textContent = '';
 
-      const r1 = getRestString(rest1, 'otra-text-1');
-      const r2 = personas === 2 ? getRestString(rest2, 'otra-text-2') : null;
+      const r1 = getRestString(restResp1, rest1, 'otra-text-1');
+      const r2 = personas === 2 ? getRestString(restResp2, rest2, 'otra-text-2') : '—';
 
       const payload = {
         nombre: document.getElementById('nombre').value.trim(),
         asiste: asistek === 'si' ? 'Sí' : 'No',
         personas: asistek === 'si' ? personas : 0,
         restricciones: r1,
-        restricciones_acompanante: r2 || '—',
+        restricciones_acompanante: r2,
         timestamp: new Date().toLocaleString('es-AR')
       };
 
